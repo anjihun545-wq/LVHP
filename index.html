@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0F1113" />
+  <meta name="description" content="LocalVision — 의정부 생활공간 기반 오프라인 미디어. 무료 TV 설치, 지역 광고, 공공정보 송출을 하나의 네트워크로 연결합니다." />
+  <meta property="og:title" content="LocalVision — 의정부의 일상에 가장 가까운 미디어" />
+  <meta property="og:description" content="무료 TV 설치 · 광고 문의 · 공공정보 송출. 사람들이 머무는 생활공간에서 지역과 사람을 연결합니다." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/hero/hero-poster.webp" />
+  <title>LocalVision — 지역 생활공간 기반 오프라인 미디어</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/mode.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/animations.js"></script>
+  <script defer src="js/modal.js"></script>
+  <script defer src="js/mode.js"></script>
+</head>
+<body data-mode="install">
+  <div class="site-shell" id="top">
+    <header class="site-header" id="siteHeader">
+      <a class="header-brand" href="#top" aria-label="LocalVision 홈">
+        <img class="brand-logo-full" src="assets/logo/lv-logo-lockup-white.png" alt="LocalVision" />
+      </a>
+      <button class="menu-btn" id="menuOpen" type="button" aria-label="메뉴 열기" aria-controls="menuOverlay" aria-expanded="false">
+        <span class="menu-lines"><span></span></span>
+      </button>
+    </header>
+
+    <nav class="service-tabs" id="serviceTabs" role="tablist" aria-label="LocalVision 이용 목적">
+      <button class="service-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-install" id="tab-install" data-mode-tab="install">
+        <span class="service-tab-index">01</span><span>사장님 · 무료 설치</span>
+      </button>
+      <button class="service-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-ads" id="tab-ads" data-mode-tab="ads">
+        <span class="service-tab-index">02</span><span>광고주 · 지역 광고</span>
+      </button>
+      <button class="service-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-public" id="tab-public" data-mode-tab="public">
+        <span class="service-tab-index">03</span><span>기관 · 공공정보</span>
+      </button>
+      <span class="service-tab-indicator" aria-hidden="true"></span>
+    </nav>
+
+    <aside class="menu-overlay" id="menuOverlay" aria-hidden="true">
+      <div class="menu-top">
+        <div class="header-brand"><img class="brand-logo-full" src="assets/logo/lv-logo-lockup-white.png" alt="LocalVision" /></div>
+        <button class="menu-close" id="menuClose" type="button" aria-label="메뉴 닫기">×</button>
+      </div>
+      <div class="menu-mode-title">무엇을 찾고 계신가요?</div>
+      <nav class="menu-nav" aria-label="서비스 메뉴">
+        <button class="menu-link menu-mode-link" type="button" data-mode-tab="install"><b>FREE TV</b><small>사장님 · 무료 설치</small></button>
+        <button class="menu-link menu-mode-link" type="button" data-mode-tab="ads"><b>ADVERTISING</b><small>광고주 · 지역 광고</small></button>
+        <button class="menu-link menu-mode-link" type="button" data-mode-tab="public"><b>PUBLIC</b><small>기관 · 공공정보</small></button>
+      </nav>
+      <a class="menu-about-link" href="#brandStory">LocalVision 브랜드 소개 →</a>
+      <div class="menu-footer">LOCAL MEDIA IN EVERYDAY PLACES</div>
+    </aside>
+
+    <main>
+      <!-- DYNAMIC HERO -->
+      <section class="hero hero--mode" id="home" aria-label="LocalVision 서비스 소개">
+        <div class="hero-media">
+          <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/images/hero/hero-poster.webp" aria-hidden="true">
+            <source src="assets/video/hero-mode-tabs.mp4" type="video/mp4" />
+          </video>
+          <img src="assets/images/hero/hero-poster.webp" alt="LocalVision이 설치된 생활공간 예시" loading="eager" decoding="async" />
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-mode-wash" aria-hidden="true"></div>
+        <div class="hero-copy hero-copy--dynamic" id="heroCopy">
+          <span class="eyebrow hero-mode-eyebrow" id="heroEyebrow">FREE TV INSTALLATION</span>
+          <h1 class="display" id="heroTitle">매장 TV,<br />부담 없이 시작하세요</h1>
+          <p class="body-lg" id="heroDesc">매장 화면은 더 유용하게, 지역 콘텐츠는 자연스럽게.<br />LocalVision이 설치부터 운영까지 함께합니다.</p>
+          <p class="hero-note" id="heroNote">※ 설치 가능 여부와 방식은 매장 환경 확인 후 안내됩니다.</p>
+          <div class="hero-assist-tabs" id="heroAssistTabs" aria-label="서비스 핵심 안내">
+            <span class="hero-assist-tab">무료 TV 설치</span>
+            <span class="hero-assist-tab">매장 화면 70%</span>
+            <span class="hero-assist-tab">설치·운영 지원</span>
+          </div>
+        </div>
+        <div class="hero-mode-chip" id="heroModeChip"><span>01</span> 무료 TV 설치</div>
+        <div class="scroll-cue" aria-hidden="true">↓</div>
+        <div class="hero-curtain hero-curtain--left"></div>
+        <div class="hero-curtain hero-curtain--right"></div>
+        <div class="hero-intro" aria-hidden="true"><strong>LocalVision</strong><div class="hero-intro-line"></div></div>
+      </section>
+
+      <!-- SHARED BRAND STORY -->
+      <section class="brand-snapshot section--white" id="brandStory">
+        <div class="brand-snapshot-copy reveal">
+          <span class="eyebrow">LOCALVISION</span>
+          <h2 class="h2">생활공간에서 시작되는<br />지역 미디어</h2>
+          <p class="body-lg muted">사람들이 일부러 찾아보지 않아도, 이미 머무르고 있는 공간에서 자연스럽게 지역과 연결됩니다.</p>
+        </div>
+        <figure class="brand-snapshot-media reveal zoomable-media" data-lightbox-image="assets/images/custom/brand-story-70-30.png" data-lightbox-alt="생활공간 안에서 70대 30 구조로 운영되는 LocalVision TV 예시">
+          <img src="assets/images/custom/brand-story-70-30.png" alt="생활공간 안에서 70대 30 구조로 운영되는 LocalVision TV 예시" loading="lazy" decoding="async" />
+        </figure>
+        <div class="brand-snapshot-grid reveal">
+          <div><strong>70%</strong><span>매장 메뉴 · 홍보</span></div>
+          <div><strong>30%</strong><span>지역 · 공공 · 광고</span></div>
+        </div>
+      </section>
+
+      <!-- INSTALL PANEL -->
+      <div class="mode-panel is-active" id="panel-install" role="tabpanel" aria-labelledby="tab-install" data-mode-panel="install">
+        <section class="section section--white mode-opening">
+          <div class="reveal">
+            <span class="eyebrow">FREE TV INSTALLATION</span>
+            <h2 class="h2">TV를 하나 더 다는 게 아니라,<br />매장 화면을 하나 더 <span class="keep-together">갖는 일.</span></h2>
+            <p class="body-lg muted">메뉴, 가격, 추천상품, 이벤트를 보여주는 화면에 LocalVision 운영 시스템을 더합니다.</p>
+          </div>
+          <figure class="mode-opening-visual scale-reveal zoomable-media" data-lightbox-image="assets/images/custom/install-structure-infographic.png" data-lightbox-alt="우리 가게 70퍼센트와 지역소식 30퍼센트 구조를 설명하는 인포그래픽">
+            <img src="assets/images/custom/install-structure-infographic.png" alt="우리 가게 70퍼센트와 지역소식 30퍼센트 구조를 설명하는 인포그래픽" loading="lazy" decoding="async" />
+          </figure>
+          <p class="legal-note reveal">※ 무료 설치 범위, 기기 제공 여부, 기존 TV 활용 여부는 매장 환경과 협의 조건에 따라 달라질 수 있습니다.</p>
+        </section>
+
+        <section class="section section--dark split-section">
+          <div class="split-intro reveal"><span class="eyebrow">HOW IT WORKS</span><h2 class="h2">하나의 TV,<br />두 가지 역할</h2><p class="body-lg muted">사장님에게 필요한 화면은 유지하고, 일부 영역에서는 우리 동네의 정보와 콘텐츠가 흐릅니다.</p></div>
+          <div class="tv-stage scale-reveal">
+            <figure class="tv-photo" id="tvPhotoInstall">
+              <img src="assets/images/localvision-70-30.webp" alt="매장 안 LocalVision TV 예시" loading="lazy" decoding="async" />
+
+            </figure>
+          </div>
+          <div class="split-explain reveal">
+            <div class="split-block"><strong class="split-number">70%</strong><h3 class="split-title">매장을 위한 화면</h3><p class="split-text">메뉴 · 가격 · 추천상품 · 이벤트<br />매장 자체 홍보 콘텐츠</p></div>
+            <div class="split-block split-block--local"><strong class="split-number">30%</strong><h3 class="split-title">우리 동네를 위한 화면</h3><p class="split-text">지역소식 · 공공정보 · 로컬콘텐츠 · 광고</p></div>
+            <p class="microcopy">매장 운영을 방해하지 않으면서 지역 미디어가 함께 작동합니다.</p>
+          </div>
+        </section>
+
+        <section class="section section--dark process-section">
+          <div class="reveal"><span class="eyebrow">INSTALL PROCESS</span><h2 class="h2">신청부터 운영까지<br />복잡하지 않게</h2></div>
+          <div class="process-rail" data-progress-rail>
+            <article class="process-step reveal"><em>01</em><div><b>설치 문의</b><p>매장 위치와 업종, 현재 TV 환경을 간단히 확인합니다.</p></div></article>
+            <article class="process-step reveal"><em>02</em><div><b>현장 확인</b><p>설치 위치, 전원·네트워크, 기존 TV 활용 가능 여부를 확인합니다.</p></div></article>
+            <article class="process-step reveal"><em>03</em><div><b>화면 세팅</b><p>매장용 콘텐츠와 LocalVision 30% 영역을 함께 구성합니다.</p></div></article>
+            <article class="process-step reveal"><em>04</em><div><b>운영 시작</b><p>실제 매장 운영에 맞춰 콘텐츠를 편성하고 관리합니다.</p></div></article>
+            <span class="process-progress" aria-hidden="true"></span>
+          </div>
+        </section>
+
+        <section class="section section--dark places">
+          <div class="places-intro reveal"><span class="eyebrow">EVERYDAY PLACES</span><h2 class="h2">사람들이 실제로<br />머무는 곳에 설치합니다</h2><p class="body-lg muted">음식점, 카페, 병원, 생활서비스처럼 체류가 발생하는 공간을 중심으로 협의합니다.</p></div>
+          <div class="place-stack">
+            <article class="place-card scale-reveal"><img src="assets/images/places/place-restaurant-real.webp" alt="음식점 속 LocalVision 예시" loading="lazy" /><div class="place-copy"><span class="place-en">RESTAURANT</span><strong class="place-ko">음식점</strong><p class="place-desc">식사와 대화가 이어지는 공간</p></div></article>
+            <article class="place-card scale-reveal"><img src="assets/images/places/place-cafe-real.webp" alt="카페 속 LocalVision 예시" loading="lazy" /><div class="place-copy"><span class="place-en">CAFE</span><strong class="place-ko">카페</strong><p class="place-desc">기다리고 쉬어가는 공간</p></div></article>
+            <article class="place-card scale-reveal"><img src="assets/images/places/place-medical-real.webp" alt="병원 대기공간 LocalVision 예시" loading="lazy" /><div class="place-copy"><span class="place-en">MEDICAL</span><strong class="place-ko">병원 · 의원</strong><p class="place-desc">대기시간이 발생하는 공간</p></div></article>
+            <article class="place-card scale-reveal"><img src="assets/images/places/place-lifestyle-real.webp" alt="생활서비스 공간 LocalVision 예시" loading="lazy" /><div class="place-copy"><span class="place-en">LIFESTYLE</span><strong class="place-ko">생활서비스</strong><p class="place-desc">운동 · 미용 · 다양한 생활공간</p></div></article>
+          </div>
+        </section>
+
+        <section class="section section--white">
+          <div class="reveal"><span class="eyebrow">LOCALVISION IN TOWN</span><h2 class="h2">실제 매장에서<br />이미 운영되고 있습니다</h2></div>
+          <div class="case-stack">
+            <article class="case-card reveal case-flyin" data-lightbox-image="assets/images/stores/store-restaurant-real.webp" data-lightbox-alt="음식점 LocalVision 운영 사례">
+              <div class="case-media"><img src="assets/images/stores/store-restaurant-real.webp" alt="음식점 LocalVision 운영 사례" loading="lazy"/></div>
+              <div class="case-copy"><small>RESTAURANT</small><b>음식점</b><p>매장 자체 콘텐츠와 지역 콘텐츠를 한 화면에서 운영</p></div>
+            </article>
+            <article class="case-card reveal case-flyin" data-lightbox-image="assets/images/stores/store-cafe-real.webp" data-lightbox-alt="카페 LocalVision 운영 사례">
+              <div class="case-media"><img src="assets/images/stores/store-cafe-real.webp" alt="카페 LocalVision 운영 사례" loading="lazy"/></div>
+              <div class="case-copy"><small>CAFE</small><b>카페</b><p>고객 체류시간 동안 자연스럽게 작동하는 화면</p></div>
+            </article>
+            <article class="case-card reveal case-flyin" data-lightbox-image="assets/images/stores/store-medical-real.webp" data-lightbox-alt="병원 의원 LocalVision 운영 사례">
+              <div class="case-media"><img src="assets/images/stores/store-medical-real.webp" alt="병원 의원 LocalVision 운영 사례" loading="lazy"/></div>
+              <div class="case-copy"><small>MEDICAL</small><b>병원 · 의원</b><p>대기공간의 안내와 지역정보 접점을 함께 구성</p></div>
+            </article>
+            <article class="case-card reveal case-flyin" data-lightbox-image="assets/images/stores/store-lifestyle-real.webp" data-lightbox-alt="생활서비스 LocalVision 운영 사례">
+              <div class="case-media"><img src="assets/images/stores/store-lifestyle-real.webp" alt="생활서비스 LocalVision 운영 사례" loading="lazy"/></div>
+              <div class="case-copy"><small>LIFESTYLE</small><b>생활서비스</b><p>운동 · 미용 · 생활형 서비스 공간에서 자연스럽게 노출</p></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section section--dark content-showcase-section">
+          <div class="reveal"><span class="eyebrow">WHAT PLAYS ON 30%</span><h2 class="h2">지역 콘텐츠가<br />이렇게 함께 흐릅니다</h2><p class="body-lg muted">매장 화면을 유지하면서, 30% 영역에는 지역소식과 LocalVision 로컬 콘텐츠, 지역광고가 함께 편성됩니다.</p></div>
+          <div class="content-image-accordion reveal" data-image-accordion>
+            <figure class="content-image-panel is-active" data-image-panel tabindex="0">
+              <img src="assets/images/content/content-news.webp" alt="LocalVision 지역소식 콘텐츠 예시" loading="lazy" />
+              <figcaption><small>LOCAL NEWS</small><b>지역소식</b></figcaption>
+            </figure>
+            <figure class="content-image-panel" data-image-panel tabindex="0">
+              <img src="assets/images/content/content-toon.webp" alt="LocalVision 의정부툰 콘텐츠 예시" loading="lazy" />
+              <figcaption><small>LOCAL CONTENT</small><b>의정부툰</b></figcaption>
+            </figure>
+            <figure class="content-image-panel" data-image-panel tabindex="0">
+              <img src="assets/images/content/content-ad.webp" alt="LocalVision 지역광고 콘텐츠 예시" loading="lazy" />
+              <figcaption><small>LOCAL AD</small><b>지역광고</b></figcaption>
+            </figure>
+          </div>
+        </section>
+
+                <section class="partner-section partner-section--soft" aria-label="설치 파트너사"><div class="partner-intro reveal"><span class="eyebrow">STORE PARTNERS</span><h2 class="h2">의정부 로컬 매장과<br />함께 운영하고 있습니다</h2><p class="body-lg muted">LocalVision이 실제로 설치·운영되고 있는 지역 매장 로고를 모았습니다.</p></div><div class="partner-marquee-viewport reveal"><div class="partner-marquee"><div class="partner-marquee-group"><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-sushi-hiromi.webp" alt="스시히로미 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-big-bro-army-stew.webp" alt="큰형네 의정부 부대찌개 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gopne.webp" alt="곱네 한우곱창 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-drhong-gym.webp" alt="닥터홍짐 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyungwon-sikdang.webp" alt="경원식당 민락점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyochon.webp" alt="교촌치킨 금오점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-shininja-bindaetteok.webp" alt="신인자 빈대떡 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-manhwa-ganjang-gejang.webp" alt="만화간장게장 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-ok-neungi-maeul.webp" alt="OK능이마을 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gukki-gukki.webp" alt="구끼구끼 로고" loading="lazy" /></div></div><div class="partner-marquee-group" aria-hidden="true"><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-sushi-hiromi.webp" alt="스시히로미 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-big-bro-army-stew.webp" alt="큰형네 의정부 부대찌개 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gopne.webp" alt="곱네 한우곱창 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-drhong-gym.webp" alt="닥터홍짐 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyungwon-sikdang.webp" alt="경원식당 민락점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyochon.webp" alt="교촌치킨 금오점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-shininja-bindaetteok.webp" alt="신인자 빈대떡 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-manhwa-ganjang-gejang.webp" alt="만화간장게장 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-ok-neungi-maeul.webp" alt="OK능이마을 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gukki-gukki.webp" alt="구끼구끼 로고" loading="lazy" /></div></div></div></div></section>
+
+<section class="mode-cta section--blue">
+          <span class="eyebrow">FOR STORE</span><h2>우리 매장에도<br />LocalVision을.</h2><p>설치 가능 여부부터 먼저 확인해보세요.</p><button type="button" class="mode-cta-btn" data-modal-type="store">무료 설치 가능 여부 확인하기 →</button>
+        </section>
+
+        <section class="section section--white mode-faq"><div class="reveal"><span class="eyebrow">INSTALL FAQ</span><h2 class="h2">설치 전 많이 묻는 질문</h2></div><div class="faq-list reveal">
+          <article class="faq-item"><button class="faq-q" type="button"><span>정말 무료로 설치되나요?</span><span>+</span></button><div class="faq-a"><p>설치 범위와 기기 제공 방식은 매장 환경, 기존 TV 유무, 운영 조건에 따라 달라질 수 있습니다. 먼저 매장 환경을 확인한 뒤 가능한 방식을 안내합니다.</p></div></article>
+          <article class="faq-item"><button class="faq-q" type="button"><span>기존 TV도 사용할 수 있나요?</span><span>+</span></button><div class="faq-a"><p>가능한 경우 기존 TV를 활용할 수 있습니다. 화면 비율, 연결 방식, 네트워크 환경을 설치 전 확인합니다.</p></div></article>
+          <article class="faq-item"><button class="faq-q" type="button"><span>매장 화면은 제가 바꿀 수 있나요?</span><span>+</span></button><div class="faq-a"><p>매장용 메뉴·홍보 콘텐츠의 변경 방식은 운영 구조에 맞춰 협의합니다. 반복적인 현장 작업을 줄이는 방향으로 운영합니다.</p></div></article>
+        </div></section>
+      </div>
+
+      <!-- ADVERTISING PANEL -->
+      <div class="mode-panel" id="panel-ads" role="tabpanel" aria-labelledby="tab-ads" data-mode-panel="ads" hidden>
+        <section class="section section--white mode-opening ad-opening">
+          <div class="reveal"><span class="eyebrow">LOCAL ADVERTISING</span><h2 class="h2">지역 사람에게 보여주려면,<br />지역 사람들이 있는 곳으로.</h2><p class="body-lg muted">LocalVision은 의정부 생활공간의 TV를 통해 지역 타깃에게 브랜드를 반복적으로 노출합니다.</p></div>
+          <div class="metric-stage reveal" data-metric-stage>
+            <div class="metric-main"><strong data-count="42" data-suffix="+">42+</strong><span>의정부 생활공간 제휴 매장</span></div>
+            <div class="metric-row"><div><strong data-count="364200" data-format="comma">364,200</strong><span>1개월 노출 사례</span></div><div><strong data-count="30" data-suffix=" MIN">30 MIN</strong><span>체류 기반 노출 환경</span></div></div>
+            <p>* 노출 사례와 체류환경은 운영기간·매장별 조건에 따라 달라질 수 있습니다.</p>
+          </div>
+        </section>
+
+        <section class="section section--black ad-network-fullbleed" aria-label="의정부 시민 생활권 로컬비전 네트워크">
+          <div class="ad-network-bg-accessible">
+            <span>LOCAL NETWORK</span>
+            <h2>의정부 시민 생활권 안에서 브랜드를 반복해서 보여줍니다</h2>
+            <p>사람들이 먹고, 쉬고, 기다리는 공간에 설치된 로컬비전 네트워크를 통해 지역 타깃에게 더 가까운 광고를 전달합니다.</p>
+            <strong>42 운영거점 · 의정부시 전역</strong>
+          </div>
+          <a class="ad-network-bg-cta" href="https://lvhp.pages.dev/" target="_blank" rel="noopener noreferrer">송출 매장 보기 →</a>
+        </section>
+
+        <section class="section section--black">
+          <div class="reveal"><span class="eyebrow">STAY · SEE · REMEMBER</span><h2 class="h2">지나가는 3초보다<br />머무는 시간을 봅니다</h2><p class="body-lg muted">주문하고, 기다리고, 식사하고, 쉬는 동안 화면은 생활공간 안에 계속 존재합니다.</p></div>
+          <div class="flow reveal"><div class="flow-step"><div class="flow-num">01</div><div class="flow-main"><b>입장</b><p>광고를 보기 위해 방문한 게 아니라 이미 공간에 들어온 상태.</p></div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-main"><b>대기 · 주문</b><p>메뉴와 함께 화면을 자연스럽게 마주칩니다.</p><span class="tv-mini">TV CONTACT</span></div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-main"><b>체류</b><p>머무는 동안 반복적으로 콘텐츠가 노출됩니다.</p><span class="tv-mini">REPEAT</span></div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-main"><b>행동</b><p>QR · 검색 · 방문 · 캠페인 참여로 이어질 수 있습니다.</p></div></div></div>
+        </section>
+
+        <section class="section section--white">
+          <div class="reveal"><span class="eyebrow">CAMPAIGN OPTIONS</span><h2 class="h2">광고만 틀지 않고,<br />캠페인을 설계합니다</h2></div>
+          <div class="offer-grid">
+            <article class="offer-card reveal"><span>01</span><small>SCREEN</small><h3>지역 TV 송출</h3><p>캠페인 기간과 생활권에 맞춰 LocalVision 화면에 광고를 편성합니다.</p></article>
+            <article class="offer-card offer-card--dark reveal"><span>02</span><small>CREATIVE</small><h3>콘텐츠 제작</h3><p>TV 화면에 맞는 광고 이미지·영상 제작을 함께 설계할 수 있습니다.</p></article>
+            <article class="offer-card reveal"><span>03</span><small>ONLINE × OFFLINE</small><h3>SNS 연계</h3><p>인스타그램 콘텐츠와 매장 TV를 연결해 지역 반응을 확장할 수 있습니다.</p></article>
+          </div>
+        </section>
+
+        <section class="section section--white content-single-section">
+          <div class="reveal"><span class="eyebrow">ON-SCREEN CREATIVE</span><h2 class="h2">실제 화면에서는<br />이렇게 보입니다</h2><p class="body-lg muted">지역 광고도 TV 30% 화면에 맞게 세로형 콘텐츠로 편성할 수 있습니다.</p></div>
+          <div class="content-image-accordion ad-creative-accordion reveal" data-image-accordion>
+            <figure class="content-image-panel is-active" data-image-panel tabindex="0">
+              <img src="assets/images/content/content-ad.webp" alt="치과 광고 콘텐츠 예시" loading="lazy" />
+              <figcaption><small>LOCAL AD</small><b>치과 광고</b></figcaption>
+            </figure>
+            <figure class="content-image-panel" data-image-panel tabindex="0">
+              <img src="assets/images/advertising/creative-flower-move.jpg" alt="꽃집 이전 안내 광고 예시" loading="lazy" />
+              <figcaption><small>STORE NOTICE</small><b>꽃집 이전 안내</b></figcaption>
+            </figure>
+            <figure class="content-image-panel" data-image-panel tabindex="0">
+              <img src="assets/images/advertising/creative-culture-station.jpg" alt="문화행사 홍보 광고 예시" loading="lazy" />
+              <figcaption><small>PUBLIC EVENT</small><b>문화행사 홍보</b></figcaption>
+            </figure>
+            <figure class="content-image-panel" data-image-panel tabindex="0">
+              <img src="assets/images/advertising/creative-localvision-promo.jpg" alt="LocalVision 지역광고 홍보 예시" loading="lazy" />
+              <figcaption><small>LOCALVISION</small><b>로컬비전 홍보</b></figcaption>
+            </figure>
+            <figure class="content-image-panel" data-image-panel tabindex="0">
+              <img src="assets/images/advertising/creative-marathon.jpg" alt="의정부 물길 마라톤 행사 광고 예시" loading="lazy" />
+              <figcaption><small>EVENT PROMOTION</small><b>마라톤 행사 안내</b></figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="section section--black hotplace-live-section">
+          <div class="hotplace-live-copy reveal">
+            <span class="eyebrow">UIJEONGBU HOTPLACES</span>
+            <h2 class="h2">의정부 핫플레이스에<br /><span>당신의 브랜드를 보여주세요</span></h2>
+            <p class="body-lg muted">음식점 · 카페 · 병원 · 생활서비스.<br />시민이 실제로 머무는 공간에서 브랜드를 자연스럽게 반복 노출합니다.</p>
+          </div>
+
+          <div class="hotplace-flyin-stage" aria-label="의정부 핫플레이스 LocalVision 실제 운영 사례">
+            <div class="hotplace-flyin-grid">
+              <article class="hotplace-live-card">
+                <img src="assets/images/hotplaces/sushi-hiromi.webp" alt="스시히로미 음식점에 설치된 LocalVision TV" loading="lazy" decoding="async" />
+                <div class="hotplace-live-label">
+                  <small>RESTAURANT</small>
+                  <b>음식점</b>
+                  <span>스시히로미</span>
+                </div>
+              </article>
+
+              <article class="hotplace-live-card">
+                <img src="assets/images/hotplaces/vane-bakery.webp" alt="바네베이커리 카페에 설치된 LocalVision TV" loading="lazy" decoding="async" />
+                <div class="hotplace-live-label">
+                  <small>CAFE</small>
+                  <b>카페</b>
+                  <span>바네베이커리</span>
+                </div>
+              </article>
+
+              <article class="hotplace-live-card">
+                <img src="assets/images/hotplaces/yonsei-tantan.webp" alt="연세탄탄플란트치과에 설치된 LocalVision TV" loading="lazy" decoding="async" />
+                <div class="hotplace-live-label">
+                  <small>MEDICAL</small>
+                  <b>병원</b>
+                  <span>연세탄탄플란트치과</span>
+                </div>
+              </article>
+
+              <article class="hotplace-live-card">
+                <img src="assets/images/hotplaces/drhong-gym.webp" alt="닥터홍짐에 설치된 LocalVision TV" loading="lazy" decoding="async" />
+                <div class="hotplace-live-label">
+                  <small>LIFESTYLE</small>
+                  <b>생활서비스</b>
+                  <span>닥터홍짐</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="hotplace-center-badge" aria-hidden="true">
+              <small>LocalVision</small>
+              <strong>하나의 광고가<br /><span>더 많은 일상의 공간에</span></strong>
+              <i></i>
+              <p>우리 동네, 더 가까운 곳에서<br />더 많은 사람들에게 보여줍니다.</p>
+            </div>
+          </div>
+
+          <div class="hotplace-live-proof reveal">
+            <span><strong>42+</strong> 의정부 생활공간</span>
+            <i></i>
+            <span>생활권 기반 <strong>반복 노출</strong></span>
+          </div>
+        </section>
+
+        <section class="section section--white">
+          <div class="reveal"><span class="eyebrow">CONTENT ENGINE</span><h2 class="h2">온라인 반응을<br />오프라인으로 이어서</h2></div>
+          <div class="engine-flow reveal"><div class="engine-step"><em>01</em><div><b>INSTAGRAM</b><p>지역 콘텐츠 또는 캠페인 업로드</p></div></div><div class="engine-step"><em>02</em><div><b>REACTION</b><p>댓글 · 공유 · 참여 반응 수집</p></div></div><div class="engine-step"><em>03</em><div><b>LOCALVISION TV</b><p>생활공간에서 캠페인 접점 확대</p></div></div><div class="engine-step"><em>04</em><div><b>QR / ACTION</b><p>다시 온라인 행동으로 연결</p></div></div></div>
+        </section>
+
+                <section class="partner-section" aria-label="광고 파트너사"><div class="partner-intro reveal"><span class="eyebrow">BRAND PARTNERS</span><h2 class="h2">지역의 다양한 브랜드와<br />함께합니다</h2><p class="body-lg muted">생활공간 기반 노출이 가능한 지역 브랜드와 실제 협력 네트워크를 보여드립니다.</p></div><div class="partner-marquee-viewport reveal"><div class="partner-marquee partner-marquee--reverse"><div class="partner-marquee-group"><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-sushi-hiromi.webp" alt="스시히로미 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-big-bro-army-stew.webp" alt="큰형네 의정부 부대찌개 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gopne.webp" alt="곱네 한우곱창 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-drhong-gym.webp" alt="닥터홍짐 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyungwon-sikdang.webp" alt="경원식당 민락점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyochon.webp" alt="교촌치킨 금오점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-shininja-bindaetteok.webp" alt="신인자 빈대떡 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-manhwa-ganjang-gejang.webp" alt="만화간장게장 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-ok-neungi-maeul.webp" alt="OK능이마을 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gukki-gukki.webp" alt="구끼구끼 로고" loading="lazy" /></div></div><div class="partner-marquee-group" aria-hidden="true"><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-sushi-hiromi.webp" alt="스시히로미 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-big-bro-army-stew.webp" alt="큰형네 의정부 부대찌개 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gopne.webp" alt="곱네 한우곱창 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-drhong-gym.webp" alt="닥터홍짐 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyungwon-sikdang.webp" alt="경원식당 민락점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyochon.webp" alt="교촌치킨 금오점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-shininja-bindaetteok.webp" alt="신인자 빈대떡 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-manhwa-ganjang-gejang.webp" alt="만화간장게장 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-ok-neungi-maeul.webp" alt="OK능이마을 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gukki-gukki.webp" alt="구끼구끼 로고" loading="lazy" /></div></div></div></div></section>
+
+<section class="mode-cta section--blue"><span class="eyebrow">FOR ADVERTISER</span><h2>의정부 생활공간에<br />브랜드를 보여주세요.</h2><p>캠페인 목적과 기간을 알려주시면 송출 방식을 함께 설계합니다.</p><button type="button" class="mode-cta-btn" data-modal-type="advertiser">광고 운영안 받아보기 →</button></section>
+
+        <section class="section section--white mode-faq"><div class="reveal"><span class="eyebrow">AD FAQ</span><h2 class="h2">광고 전 많이 묻는 질문</h2></div><div class="faq-list reveal">
+          <article class="faq-item"><button class="faq-q" type="button"><span>어떤 매장에 광고가 나오나요?</span><span>+</span></button><div class="faq-a"><p>캠페인 목적과 운영 가능 매장을 기준으로 음식점, 카페, 병원·의원, 생활서비스 등 의정부 제휴 생활공간을 협의합니다.</p></div></article>
+          <article class="faq-item"><button class="faq-q" type="button"><span>광고 영상이 없어도 가능한가요?</span><span>+</span></button><div class="faq-a"><p>가능합니다. 기존 소재를 화면에 맞게 조정하거나 별도의 이미지·영상 제작을 함께 협의할 수 있습니다.</p></div></article>
+          <article class="faq-item"><button class="faq-q" type="button"><span>송출 결과를 확인할 수 있나요?</span><span>+</span></button><div class="faq-a"><p>캠페인 상품과 운영 방식에 따라 송출 기간, 대상 매장, 운영 결과를 정리한 리포트 제공 범위를 협의합니다.</p></div></article>
+        </div></section>
+      </div>
+
+      <!-- PUBLIC PANEL -->
+      <div class="mode-panel" id="panel-public" role="tabpanel" aria-labelledby="tab-public" data-mode-panel="public" hidden>
+        <section class="public-communication-full-section" aria-label="공공정보 송출 소개">
+          <div class="public-communication-sr">
+            <span>PUBLIC COMMUNICATION</span>
+            <h2>의정부 시민 생활권 안에서 공공정보를 반복해서 보여줍니다</h2>
+            <p>사람들이 먹고, 쉬고, 기다리는 공간에 설치된 로컬비전 네트워크를 통해 지역 주민에게 더 가까운 공공정보를 전달합니다.</p>
+            <strong>42 운영거점 · 의정부시 전역</strong>
+          </div>
+          <a class="public-hotplace-cta" href="https://lvhp.pages.dev/" target="_blank" rel="noopener noreferrer">생활공간 송출 거점 보기 →</a>
+        </section>
+
+        <section class="section section--dark public-compare-section">
+          <div class="reveal">
+            <span class="eyebrow">WHY LOCALVISION</span>
+            <h2 class="h2">찾아와야 보이는 정보보다<br />일상에서 만나는 정보</h2>
+            <p class="body-lg muted">기존 채널은 시민이 직접 찾아봐야 하고,<br />LocalVision은 시민이 머무는 공간에서 자연스럽게 보이게 합니다.</p>
+          </div>
+          <div class="public-compare-stack">
+            <article class="public-compare-item reveal">
+              <figure class="public-compare-media">
+                <img src="assets/images/public/public-search-info-street.png" alt="현수막과 게시판이 있는 거리에서 시민이 정보를 직접 찾아보는 장면" loading="lazy" />
+              </figure>
+              <div class="public-compare-copy">
+                <small>기존 홍보</small>
+                <h3>시민이 찾아보는 정보</h3>
+                <p>배너 · 현수막 · 홈페이지 · 게시판 등 정보가 있는 곳으로 시민이 직접 접근해야 합니다.</p>
+              </div>
+            </article>
+
+            <article class="public-compare-item public-compare-item--blue reveal">
+              <figure class="public-compare-media">
+                <img src="assets/images/public/public-localvision-dining-tv.png" alt="식당에서 시민이 머무는 동안 LocalVision TV를 자연스럽게 보는 장면" loading="lazy" />
+              </figure>
+              <div class="public-compare-copy">
+                <small>LOCALVISION SYSTEM</small>
+                <h3>시민이 머무는 공간</h3>
+                <p>우리 TV가 설치된 생활공간에서 식사하고 기다리는 동안 공공정보를 자연스럽고 반복적으로 보게 됩니다.</p>
+              </div>
+            </article>
+          </div>
+          <p class="public-compare-note reveal">기존 홍보 채널은 유지하고, LocalVision으로 생활동선 접점을 추가합니다.</p>
+        </section>
+
+        <section class="section section--white public-topic-section">
+          <div class="reveal">
+            <span class="eyebrow">PUBLIC CONTENT</span>
+            <h2 class="h2">공공정보를<br />생활 언어로 편성합니다</h2>
+            <p class="body-lg muted">기관에서 전달하고 싶은 내용을 목적에 맞게 구성해<br />생활공간 TV에 맞는 카드형 콘텐츠로 송출합니다.</p>
+          </div>
+          <div class="public-topic-grid public-topic-grid--cta">
+            <button class="topic-card topic-card--action reveal" type="button" data-modal-type="public" data-modal-topic="정책"
+              data-modal-eyebrow="PUBLIC POLICY"
+              data-modal-title="정책 홍보 문의"
+              data-modal-desc="정책 안내, 제도 홍보, 지원사업 정보를 생활공간 TV에 맞게 송출할 수 있도록 안내합니다."
+              data-modal-items="정책 안내 콘텐츠 구성|송출 기간 및 매장 생활권 협의|QR · 홈페이지 연결">
+              <em>01</em><b>정책</b><p>시민에게 필요한 정책 안내</p><span class="topic-card-cta">송출 협의 →</span>
+            </button>
+            <button class="topic-card topic-card--action reveal" type="button" data-modal-type="public" data-modal-topic="행사"
+              data-modal-eyebrow="PUBLIC EVENT"
+              data-modal-title="행사 홍보 문의"
+              data-modal-desc="축제, 체육, 문화행사를 시민이 자주 머무는 공간에서 자연스럽게 알릴 수 있도록 설계합니다."
+              data-modal-items="행사 홍보 카드형 콘텐츠|행사 일정 맞춤 송출|QR · 신청 페이지 연결">
+              <em>02</em><b>행사</b><p>축제 · 체육 · 문화행사</p><span class="topic-card-cta">송출 협의 →</span>
+            </button>
+            <button class="topic-card topic-card--action reveal" type="button" data-modal-type="public" data-modal-topic="안전"
+              data-modal-eyebrow="PUBLIC SAFETY"
+              data-modal-title="안전정보 송출 문의"
+              data-modal-desc="재난, 생활안전, 예방정보를 빠르고 명확하게 생활공간 TV로 전달할 수 있도록 안내합니다."
+              data-modal-items="안전정보 카드형 구성|긴급/상시 송출 협의|QR · 행동유도 연결">
+              <em>03</em><b>안전</b><p>재난 · 생활안전 · 예방</p><span class="topic-card-cta">송출 협의 →</span>
+            </button>
+            <button class="topic-card topic-card--action reveal" type="button" data-modal-type="public" data-modal-topic="복지"
+              data-modal-eyebrow="PUBLIC WELFARE"
+              data-modal-title="복지정보 송출 문의"
+              data-modal-desc="지원사업, 복지정보를 시민이 생활동선 안에서 쉽게 접할 수 있도록 운영안을 설계합니다."
+              data-modal-items="복지정보 콘텐츠 제작 협의|생활권 맞춤 송출|QR · 신청 페이지 연결">
+              <em>04</em><b>복지</b><p>지원사업 · 복지정보</p><span class="topic-card-cta">송출 협의 →</span>
+            </button>
+            <button class="topic-card topic-card--action reveal" type="button" data-modal-type="public" data-modal-topic="교육"
+              data-modal-eyebrow="PUBLIC EDUCATION"
+              data-modal-title="교육 프로그램 홍보 문의"
+              data-modal-desc="시민교육, 청소년 프로그램, 참여형 교육정보를 생활공간 TV에 맞게 편성할 수 있습니다."
+              data-modal-items="교육 프로그램 콘텐츠 구성|대상자 맞춤 송출|QR · 신청 페이지 연결">
+              <em>05</em><b>교육</b><p>시민교육 · 청소년 프로그램</p><span class="topic-card-cta">송출 협의 →</span>
+            </button>
+            <button class="topic-card topic-card--action reveal" type="button" data-modal-type="public" data-modal-topic="시민참여"
+              data-modal-eyebrow="PUBLIC PARTICIPATION"
+              data-modal-title="시민참여 캠페인 문의"
+              data-modal-desc="설문, 캠페인, 모집 정보를 시민이 쉽게 참여할 수 있도록 생활공간 TV로 연결합니다."
+              data-modal-items="시민참여 콘텐츠 제작|생활권 반복 노출|QR · 설문/모집 연결">
+              <em>06</em><b>시민참여</b><p>설문 · 캠페인 · 모집</p><span class="topic-card-cta">송출 협의 →</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="section section--white content-single-section public-screen-slider-section">
+          <div class="reveal"><span class="eyebrow">PUBLIC SCREEN EXAMPLE</span><h2 class="h2">생활공간 TV에서는<br />이렇게 전달됩니다</h2><p class="body-lg muted">공공정보도 30% 세로 영역에 맞게 짧고 명확한 카드형 콘텐츠로 편성합니다.</p></div>
+          <div class="public-screen-slider reveal" data-auto-slider>
+            <div class="public-screen-slider-track" data-slider-track>
+              <figure class="public-screen-slide">
+                <img src="assets/images/content/content-public.webp" alt="의정부시 시민 안전 안내 공공정보 예시" loading="lazy" />
+                <figcaption><small>PUBLIC INFO</small><b>공공정보 송출 예시</b></figcaption>
+              </figure>
+              <figure class="public-screen-slide">
+                <img src="assets/images/public-showcase/public-sports-festival.jpg" alt="가을밤의 체육 festival 포스터 예시" loading="lazy" />
+                <figcaption><small>SPORTS EVENT</small><b>체육 페스티벌</b></figcaption>
+              </figure>
+              <figure class="public-screen-slide">
+                <img src="assets/images/public-showcase/public-local-startup-challenge.jpg" alt="로컬 스타트업 챌린지 포스터 예시" loading="lazy" />
+                <figcaption><small>STARTUP</small><b>로컬 스타트업 챌린지</b></figcaption>
+              </figure>
+              <figure class="public-screen-slide">
+                <img src="assets/images/public-showcase/public-walking-festival.png" alt="체육인 워킹 페스티벌 포스터 예시" loading="lazy" />
+                <figcaption><small>COMMUNITY EVENT</small><b>워킹 페스티벌</b></figcaption>
+              </figure>
+              <figure class="public-screen-slide">
+                <img src="assets/images/public-showcase/public-resident-meeting.jpg" alt="의정부시 주민총회 포스터 예시" loading="lazy" />
+                <figcaption><small>CITIZEN PARTICIPATION</small><b>주민총회</b></figcaption>
+              </figure>
+              <figure class="public-screen-slide">
+                <img src="assets/images/public-showcase/public-minrak-beer-festival.png" alt="민락 맥주축제 포스터 예시" loading="lazy" />
+                <figcaption><small>LOCAL FESTIVAL</small><b>민락 맥주축제</b></figcaption>
+              </figure>
+            </div>
+            <div class="public-screen-slider-dots" data-slider-dots aria-label="공공정보 예시 슬라이드 선택"></div>
+          </div>
+        </section>
+
+        <section class="section section--black">
+          <div class="reveal"><span class="eyebrow">OPERATION FLOW</span><h2 class="h2">기관은 콘텐츠를 제공하고,<br />운영은 LocalVision이 연결합니다</h2><p class="body-lg muted">정책·행사·공지 콘텐츠를 받아 등록하고, 원격 관리 구조를 통해 생활공간 TV로 송출합니다.</p></div>
+          <div class="public-operation" data-progress-rail>
+            <article class="operation-step reveal"><em>01</em><div><small>INSTITUTION</small><b>기관 콘텐츠 제공</b><p>정책 · 행사 · 공지 · 캠페인 소재</p></div></article>
+            <article class="operation-step reveal"><em>02</em><div><small>CMS</small><b>콘텐츠 등록·편성</b><p>송출 기간과 콘텐츠 순서를 관리</p></div></article>
+            <article class="operation-step reveal"><em>03</em><div><small>PLAYER</small><b>원격 송출 운영</b><p>매장별 플레이어를 통해 콘텐츠 재생</p></div></article>
+            <article class="operation-step reveal"><em>04</em><div><small>LOCAL SPACE</small><b>생활공간 노출</b><p>시민이 머무는 공간에서 반복 노출</p></div></article>
+            <article class="operation-step reveal"><em>05</em><div><small>ACTION</small><b>QR · 참여 연결</b><p>홈페이지 · 신청 · 설문 등 행동으로 확장</p></div></article>
+            <span class="process-progress" aria-hidden="true"></span>
+          </div>
+        </section>
+
+        <section class="section section--white public-space-section">
+          <div class="reveal"><span class="eyebrow">EVERYDAY PUBLIC MEDIA</span><h2 class="h2">공공정보도<br />시민의 생활동선 안으로</h2><p class="body-lg muted">음식점, 카페, 병원, 생활서비스처럼 시민이 반복 방문하는 공간을 지역 미디어 접점으로 활용합니다.</p></div>
+          <div class="mini-place-row reveal"><span>음식점</span><span>카페</span><span>병원</span><span>생활서비스</span></div>
+
+          <div class="public-space-marquee reveal">
+            <div class="public-space-marquee-track">
+              <article class="public-space-card">
+                <figure><img src="assets/images/stores/store-restaurant-real.webp" alt="음식점 LocalVision 실제 운영 사진" loading="lazy" /></figure>
+                <div><small>RESTAURANT</small><b>음식점 운영 공간</b></div>
+              </article>
+              <article class="public-space-card">
+                <figure><img src="assets/images/stores/store-cafe-real.webp" alt="카페 LocalVision 실제 운영 사진" loading="lazy" /></figure>
+                <div><small>CAFE</small><b>카페 운영 공간</b></div>
+              </article>
+              <article class="public-space-card">
+                <figure><img src="assets/images/stores/store-medical-real.webp" alt="병원 의원 LocalVision 실제 운영 사진" loading="lazy" /></figure>
+                <div><small>MEDICAL</small><b>병원 · 의원 운영 공간</b></div>
+              </article>
+              <article class="public-space-card">
+                <figure><img src="assets/images/stores/store-lifestyle-real.webp" alt="생활서비스 LocalVision 실제 운영 사진" loading="lazy" /></figure>
+                <div><small>LIFESTYLE</small><b>생활서비스 운영 공간</b></div>
+              </article>
+
+              <article class="public-space-card" aria-hidden="true">
+                <figure><img src="assets/images/stores/store-restaurant-real.webp" alt="" loading="lazy" /></figure>
+                <div><small>RESTAURANT</small><b>음식점 운영 공간</b></div>
+              </article>
+              <article class="public-space-card" aria-hidden="true">
+                <figure><img src="assets/images/stores/store-cafe-real.webp" alt="" loading="lazy" /></figure>
+                <div><small>CAFE</small><b>카페 운영 공간</b></div>
+              </article>
+              <article class="public-space-card" aria-hidden="true">
+                <figure><img src="assets/images/stores/store-medical-real.webp" alt="" loading="lazy" /></figure>
+                <div><small>MEDICAL</small><b>병원 · 의원 운영 공간</b></div>
+              </article>
+              <article class="public-space-card" aria-hidden="true">
+                <figure><img src="assets/images/stores/store-lifestyle-real.webp" alt="" loading="lazy" /></figure>
+                <div><small>LIFESTYLE</small><b>생활서비스 운영 공간</b></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+                <section class="partner-section partner-section--soft" aria-label="공공 파트너사"><div class="partner-intro reveal"><span class="eyebrow">PUBLIC PARTNERS</span><h2 class="h2">지역 파트너 네트워크와<br />함께 연결합니다</h2><p class="body-lg muted">시민 접점이 되는 생활공간 네트워크를 중심으로 지역 파트너와 함께 운영합니다.</p></div><div class="partner-marquee-viewport reveal"><div class="partner-marquee"><div class="partner-marquee-group"><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-sushi-hiromi.webp" alt="스시히로미 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-big-bro-army-stew.webp" alt="큰형네 의정부 부대찌개 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gopne.webp" alt="곱네 한우곱창 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-drhong-gym.webp" alt="닥터홍짐 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyungwon-sikdang.webp" alt="경원식당 민락점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyochon.webp" alt="교촌치킨 금오점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-shininja-bindaetteok.webp" alt="신인자 빈대떡 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-manhwa-ganjang-gejang.webp" alt="만화간장게장 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-ok-neungi-maeul.webp" alt="OK능이마을 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gukki-gukki.webp" alt="구끼구끼 로고" loading="lazy" /></div></div><div class="partner-marquee-group" aria-hidden="true"><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-sushi-hiromi.webp" alt="스시히로미 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-big-bro-army-stew.webp" alt="큰형네 의정부 부대찌개 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gopne.webp" alt="곱네 한우곱창 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-drhong-gym.webp" alt="닥터홍짐 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyungwon-sikdang.webp" alt="경원식당 민락점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-kyochon.webp" alt="교촌치킨 금오점 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-shininja-bindaetteok.webp" alt="신인자 빈대떡 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-manhwa-ganjang-gejang.webp" alt="만화간장게장 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-ok-neungi-maeul.webp" alt="OK능이마을 로고" loading="lazy" /></div><div class="partner-marquee-card"><img src="assets/images/partners/local-logos/logo-gukki-gukki.webp" alt="구끼구끼 로고" loading="lazy" /></div></div></div></div></section>
+
+<section class="mode-cta section--blue"><span class="eyebrow">FOR PUBLIC</span><h2>시민이 있는 곳에서<br />공공정보를 전달하세요.</h2><p>사업 목적, 기간, 콘텐츠 유형을 알려주시면 운영안을 함께 설계합니다.</p><button type="button" class="mode-cta-btn" data-modal-type="public">공공정보 송출안 받아보기 →</button></section>
+
+        <section class="section section--white mode-faq"><div class="reveal"><span class="eyebrow">PUBLIC FAQ</span><h2 class="h2">기관에서 많이 묻는 질문</h2></div><div class="faq-list reveal">
+          <article class="faq-item"><button class="faq-q" type="button"><span>어떤 공공정보를 송출할 수 있나요?</span><span>+</span></button><div class="faq-a"><p>정책, 행사, 안전, 복지, 교육, 시민참여 등 생활공간에서 시민에게 전달할 필요가 있는 정보 중심으로 협의합니다.</p></div></article>
+          <article class="faq-item"><button class="faq-q" type="button"><span>기관이 직접 시스템을 운영해야 하나요?</span><span>+</span></button><div class="faq-a"><p>기관은 송출할 콘텐츠와 일정 정보를 제공하고, 등록·편성·원격 송출 등 운영 구조는 LocalVision과 협의할 수 있습니다.</p></div></article>
+          <article class="faq-item"><button class="faq-q" type="button"><span>QR이나 신청 페이지 연결도 가능한가요?</span><span>+</span></button><div class="faq-a"><p>콘텐츠 목적에 따라 QR을 통해 기관 홈페이지, 신청 페이지, 설문, 캠페인 참여 페이지 등으로 연결할 수 있습니다.</p></div></article>
+        </div></section>
+      </div>
+
+      <!-- SHARED FINAL -->
+      <section class="section section--black final-cta" id="contact">
+        <img class="brand-logo-final" src="assets/logo/lv-logo-lockup-white.png" alt="LocalVision" />
+        <span class="eyebrow">LOCALVISION</span>
+        <h2 class="h2 reveal" id="finalTitle">우리 매장에도<br />LocalVision을.</h2>
+        <p class="body reveal" id="finalDesc">생활공간에서 시작되는 의정부 로컬 미디어</p>
+        <button class="cta-btn reveal" type="button" id="finalCta" data-modal-type="store">무료 설치 가능 여부 확인하기 →</button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <img class="footer-brand-logo" src="assets/logo/lv-logo-lockup-white.png" alt="LocalVision" /><p>지역 생활공간 기반 오프라인 미디어</p>
+      <div class="footer-links"><button type="button" data-mode-tab="install">사장님 · 무료 설치</button><button type="button" data-mode-tab="ads">광고주 · 지역 광고</button><button type="button" data-mode-tab="public">기관 · 공공정보</button><a href="privacy.html">개인정보처리방침</a></div>
+      <p class="footer-copy">© 2026 LocalVision. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <button class="floating-inquiry" id="floatingInquiry" type="button" data-modal-type="store" aria-label="설치 문의 열기"><span class="floating-inquiry-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5.2 4.5h13.6c1 0 1.7.8 1.7 1.7v8.4c0 1-.8 1.7-1.7 1.7h-7.1l-4.6 3.2.9-3.2H5.2c-1 0-1.7-.8-1.7-1.7V6.2c0-1 .8-1.7 1.7-1.7Z"/><path d="M7.5 9h9M7.5 12.1h6.2"/></svg></span><span id="floatingInquiryLabel">설치문의</span></button>
+
+  <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="이미지 확대 보기" aria-hidden="true">
+    <button class="image-lightbox-close" type="button" id="imageLightboxClose" aria-label="확대 이미지 닫기">×</button>
+    <div class="image-lightbox-stage">
+      <img id="imageLightboxImg" src="" alt="" />
+    </div>
+  </div>
+
+  <div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-panel">
+      <div class="modal-head"><span class="eyebrow" id="modalEyebrow">LOCALVISION</span><button class="modal-close" type="button" data-modal-close aria-label="닫기">×</button></div>
+      <h3 id="modalTitle">LocalVision과 함께하기</h3>
+      <p id="modalDesc">몇 가지 질문에 답해주시면 목적에 맞게 안내해드립니다.</p>
+      <form class="inquiry-form" id="inquiryForm" novalidate>
+        <div class="inquiry-hp" aria-hidden="true"><label>웹사이트<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+        <div class="inquiry-fields" id="modalFields"></div>
+        <button class="modal-action" id="modalAction" type="submit">문의 접수하기</button>
+        <p class="inquiry-status" id="modalStatus" aria-live="polite"></p>
+        <p class="modal-form-note">※ 문의 내용은 상담과 운영안 검토를 위해 사용됩니다.</p>
+      </form>
+    </div>
+  </div>
+  <script src="js/config.js"></script>
+</body>
+</html>

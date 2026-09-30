@@ -1,0 +1,26 @@
+:root{
+  --lv-blue:#0A6CF5;
+  --lv-blue-deep:#0054D7;
+  --lv-blue-soft:#EAF2FF;
+  --lv-black:#0F1113;
+  --lv-dark:#171A1C;
+  --lv-dark-2:#202428;
+  --lv-white:#FFFFFF;
+  --lv-gray-050:#F7F8FA;
+  --lv-gray-100:#EEF0F2;
+  --lv-gray-200:#DDE1E5;
+  --lv-gray-300:#C8CDD3;
+  --lv-gray-500:#8A9199;
+  --lv-gray-700:#4A5057;
+  --lv-text:#171A1C;
+  --lv-muted:#6E757D;
+  --page-max:520px;
+  --gutter:24px;
+  --header-h:64px;
+  --radius-sm:8px;
+  --radius-md:12px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-strong:cubic-bezier(.77,.2,.05,1);
+  --shadow-soft:0 18px 60px rgba(0,0,0,.14);
+}
+@media(max-width:379px){:root{--gutter:20px}}

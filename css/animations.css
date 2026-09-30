@@ -1,0 +1,9 @@
+/* Page-specific transition helpers */
+.brand-transition{transition:background-color .08s linear,color .08s linear}
+.hero-ready .hero-curtain--left{transform:translateX(-101%);transition:transform .78s cubic-bezier(.77,.2,.05,1)}
+.hero-ready .hero-curtain--right{transform:translateX(101%);transition:transform .78s cubic-bezier(.77,.2,.05,1)}
+.hero-ready .hero-intro strong{opacity:1;transition:opacity .38s ease .12s}
+.hero-ready .hero-intro-line{width:64px;transition:width .32s ease .48s}
+.hero-open .hero-intro{opacity:0;transition:opacity .25s ease .88s}
+.hero-open .hero-copy>*{opacity:1;transform:translateY(0);transition:opacity .74s var(--ease),transform .74s var(--ease)}
+.hero-open .hero-copy .body-lg{transition-delay:.14s}
