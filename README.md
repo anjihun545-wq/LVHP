@@ -1,3 +1,12 @@
+# LocalVision v0.3.21 — Public Space Visibility Fix
+
+- 공공정보 생활동선 섹션의 실제 운영 이미지 가독성 개선
+- 모바일에서는 자동 마퀴 대신 손가락으로 넘기는 스크롤 스냅 카드 적용
+- 모바일 중복 복제 카드를 숨겨 같은 이미지 반복 노출 제거
+- 사진 비율을 세로 4:5 강제 크롭에서 4:3으로 변경해 실제 사진이 더 많이 보이도록 수정
+- 데스크톱은 더 큰 카드와 느린 자동 마퀴 유지
+- 기존 문의 팝업 / Vercel API / Apps Script 연결 구조 유지
+
 # LocalVision v0.3.20 — Image Popup Production
 
 배포 기준 버전입니다.

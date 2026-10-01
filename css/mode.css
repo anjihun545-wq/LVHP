@@ -428,7 +428,7 @@ body[data-mode="public"] .hero-mode-wash{background:radial-gradient(circle at 20
   color:#9AD1FF;
 }
 
-/* 4) moving real operation photos */
+/* 4) real operation photos — v0.3.21 visibility fix */
 .public-space-section .body-lg{
   margin-top:18px;
 }
@@ -438,7 +438,7 @@ body[data-mode="public"] .hero-mode-wash{background:radial-gradient(circle at 20
   overflow:hidden;
   border:1px solid #E2E7EC;
   background:#F5F7FA;
-  padding:10px 0;
+  padding:12px 0;
 }
 .public-space-marquee::before,
 .public-space-marquee::after{
@@ -446,7 +446,7 @@ body[data-mode="public"] .hero-mode-wash{background:radial-gradient(circle at 20
   position:absolute;
   top:0;
   bottom:0;
-  width:32px;
+  width:28px;
   z-index:2;
   pointer-events:none;
 }
@@ -460,12 +460,13 @@ body[data-mode="public"] .hero-mode-wash{background:radial-gradient(circle at 20
 }
 .public-space-marquee-track{
   display:flex;
-  gap:12px;
+  gap:14px;
   width:max-content;
-  animation:publicMarqueeRight 26s linear infinite;
+  animation:publicMarqueeRight 34s linear infinite;
+  will-change:transform;
 }
 .public-space-card{
-  flex:0 0 212px;
+  flex:0 0 292px;
   background:#fff;
   border:1px solid #E2E7EC;
   box-shadow:0 10px 24px rgba(16,30,52,.06);
@@ -473,7 +474,7 @@ body[data-mode="public"] .hero-mode-wash{background:radial-gradient(circle at 20
 }
 .public-space-card figure{
   margin:0;
-  aspect-ratio:4/5;
+  aspect-ratio:4/3;
   overflow:hidden;
   background:#DCE2E8;
 }
@@ -482,9 +483,10 @@ body[data-mode="public"] .hero-mode-wash{background:radial-gradient(circle at 20
   width:100%;
   height:100%;
   object-fit:cover;
+  object-position:center center;
 }
 .public-space-card div{
-  padding:12px 12px 14px;
+  padding:13px 14px 16px;
 }
 .public-space-card small{
   display:block;
@@ -495,7 +497,7 @@ body[data-mode="public"] .hero-mode-wash{background:radial-gradient(circle at 20
 .public-space-card b{
   display:block;
   margin-top:6px;
-  font-size:15px;
+  font-size:16px;
   line-height:1.3;
   letter-spacing:-.03em;
 }
@@ -531,8 +533,38 @@ body[data-mode="public"] .hero-mode-wash{background:radial-gradient(circle at 20
   .public-example-accordion .content-image-panel.is-active{
     flex:4.9 1 0;
   }
+  .public-space-marquee{
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:10px 16px 14px;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:16px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    overscroll-behavior-x:contain;
+  }
+  .public-space-marquee::-webkit-scrollbar{
+    display:none;
+  }
+  .public-space-marquee::before,
+  .public-space-marquee::after{
+    display:none;
+  }
+  .public-space-marquee-track{
+    gap:12px;
+    animation:none!important;
+    transform:none!important;
+    will-change:auto;
+  }
   .public-space-card{
-    flex-basis:196px;
+    flex:0 0 min(82vw,320px);
+    scroll-snap-align:center;
+  }
+  .public-space-card[aria-hidden="true"]{
+    display:none;
+  }
+  .public-space-card figure{
+    aspect-ratio:4/3;
   }
 }
 
