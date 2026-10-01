@@ -5,9 +5,42 @@
   const close=document.getElementById('menuClose');
   let lastY=window.scrollY;
   const heroVideo=document.getElementById('heroVideo');
-  if(heroVideo){const ready=()=>heroVideo.parentElement.classList.add('video-ready');if(heroVideo.readyState>=3)ready();else heroVideo.addEventListener('canplay',ready,{once:true});heroVideo.addEventListener('error',()=>heroVideo.parentElement.classList.remove('video-ready'))}
+  if(heroVideo){
+    const media=heroVideo.parentElement;
+    let fallbackTimer=null;
+    const markReady=()=>{
+      clearTimeout(fallbackTimer);
+      media?.classList.add('video-ready');
+      media?.classList.remove('video-fallback');
+    };
+    const showFallback=()=>{
+      media?.classList.remove('video-ready');
+      media?.classList.add('video-fallback');
+    };
+    const attemptPlay=()=>{
+      heroVideo.muted=true;
+      heroVideo.defaultMuted=true;
+      heroVideo.playsInline=true;
+      heroVideo.setAttribute('muted','');
+      heroVideo.setAttribute('playsinline','');
+      heroVideo.setAttribute('webkit-playsinline','');
+      const promise=heroVideo.play?.();
+      if(promise&&typeof promise.catch==='function') promise.catch(()=>{});
+      clearTimeout(fallbackTimer);
+      fallbackTimer=setTimeout(()=>{
+        if(heroVideo.readyState<2 && heroVideo.paused) showFallback();
+      },4500);
+    };
+    ['loadeddata','canplay','playing'].forEach(type=>heroVideo.addEventListener(type,markReady,{passive:true}));
+    heroVideo.addEventListener('error',showFallback,{passive:true});
+    window.addEventListener('pageshow',attemptPlay,{passive:true});
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden) attemptPlay();},{passive:true});
+    document.addEventListener('touchstart',attemptPlay,{once:true,passive:true});
+    if(heroVideo.readyState>=2) markReady();
+    attemptPlay();
+  }
 
-  const setMenu=(state)=>{menu.classList.toggle('is-open',state);menu.setAttribute('aria-hidden',String(!state));open.setAttribute('aria-expanded',String(state));document.body.style.overflow=state?'hidden':''};
+  const setMenu=(state)=>{menu.classList.toggle('is-open',state);menu.setAttribute('aria-hidden',String(!state));open.setAttribute('aria-expanded',String(state));document.body.classList.toggle('menu-open',state);document.body.style.overflow=state?'hidden':''};
   open.addEventListener('click',()=>setMenu(true));close.addEventListener('click',()=>setMenu(false));menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 
   function updateHeader(){
@@ -65,15 +98,10 @@
       dotsWrap?.appendChild(btn);
       return btn;
     });
-    function updateHeight(){
-      const active=slides[index];
-      if(active) slider.style.setProperty('--public-slide-height',active.offsetHeight+'px');
-    }
     function go(i){
       index=(i+slides.length)%slides.length;
       track.style.transform=`translateX(calc(${index} * -100%))`;
       dots.forEach((d,di)=>d.classList.toggle('is-active',di===index));
-      updateHeight();
     }
     function start(){
       if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -91,7 +119,6 @@
       }
       startX=null;start();
     },{passive:true});
-    window.addEventListener('resize',updateHeight,{passive:true});
     go(0);start();
   });
 

@@ -317,3 +317,22 @@
       rgba(0,0,0,.62) 100%
     ) !important;
 }
+
+/* =========================================================
+   v0.3.18 — iOS/Safari hero startup stability
+   - Do not cover the video with the fallback image while Safari buffers.
+   - Show the image only after an actual video fallback state is declared.
+   ========================================================= */
+.hero-media > img{
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+.hero-media.video-fallback > img{
+  opacity:1 !important;
+  visibility:visible !important;
+}
+.hero-media.video-ready > img{
+  opacity:0 !important;
+  visibility:hidden !important;
+}

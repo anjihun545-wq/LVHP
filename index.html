@@ -21,6 +21,7 @@
   <script defer src="js/animations.js"></script>
   <script defer src="js/modal.js"></script>
   <script defer src="js/mode.js"></script>
+  <script defer src="js/promo.js"></script>
 </head>
 <body data-mode="install">
   <div class="site-shell" id="top">
@@ -65,8 +66,8 @@
       <!-- DYNAMIC HERO -->
       <section class="hero hero--mode" id="home" aria-label="LocalVision 서비스 소개">
         <div class="hero-media">
-          <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/images/hero/hero-poster.webp" aria-hidden="true">
-            <source src="assets/video/hero-mode-tabs.mp4" type="video/mp4" />
+          <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+            <source src="assets/video/hero-mode-tabs-v0318.mp4" type="video/mp4" />
           </video>
           <img src="assets/images/hero/hero-poster.webp" alt="LocalVision이 설치된 생활공간 예시" loading="eager" decoding="async" />
         </div>
@@ -558,6 +559,16 @@
       <p class="footer-copy">© 2026 LocalVision. All rights reserved.</p>
     </footer>
   </div>
+
+  <aside class="audience-promo" id="audiencePromo" aria-label="LocalVision 맞춤 문의 팝업" aria-hidden="true">
+    <button class="audience-promo__close" id="audiencePromoClose" type="button" aria-label="팝업 닫기">×</button>
+    <button class="audience-promo__media" id="audiencePromoTrigger" type="button" data-modal-type="store" aria-label="무료 설치 문의 바로가기">
+      <img id="audiencePromoImage" src="assets/images/promo/promo-install.webp" alt="50~60인치 스마트메뉴판 무료설치 - LocalVision" width="900" height="900" decoding="async" fetchpriority="high" />
+    </button>
+    <div class="audience-promo__footer">
+      <button class="audience-promo__hide24" id="audiencePromoHide24" type="button">24시간 동안 열지 않기</button>
+    </div>
+  </aside>
 
   <button class="floating-inquiry" id="floatingInquiry" type="button" data-modal-type="store" aria-label="설치 문의 열기"><span class="floating-inquiry-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5.2 4.5h13.6c1 0 1.7.8 1.7 1.7v8.4c0 1-.8 1.7-1.7 1.7h-7.1l-4.6 3.2.9-3.2H5.2c-1 0-1.7-.8-1.7-1.7V6.2c0-1 .8-1.7 1.7-1.7Z"/><path d="M7.5 9h9M7.5 12.1h6.2"/></svg></span><span id="floatingInquiryLabel">설치문의</span></button>
 

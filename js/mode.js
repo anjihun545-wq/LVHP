@@ -20,7 +20,7 @@
       finalDesc:'설치 가능 여부부터 먼저 확인해보세요.',
       finalCta:'무료 설치 가능 여부 확인하기 →',
       modal:'store',
-      heroVideo:'assets/video/hero-mode-tabs.mp4',
+      heroVideo:'assets/video/hero-mode-tabs-v0318.mp4',
       floatingLabel:'설치문의'
     },
     ads:{
@@ -34,7 +34,7 @@
       finalDesc:'캠페인 목적에 맞는 LocalVision 광고 운영안을 함께 설계합니다.',
       finalCta:'광고 운영안 받아보기 →',
       modal:'advertiser',
-      heroVideo:'assets/video/hero-mode-tabs.mp4',
+      heroVideo:'assets/video/hero-mode-tabs-v0318.mp4',
       floatingLabel:'광고문의'
     },
     public:{
@@ -48,7 +48,7 @@
       finalDesc:'사업 목적과 콘텐츠 유형에 맞는 생활밀착형 송출안을 함께 설계합니다.',
       finalCta:'공공정보 송출안 받아보기 →',
       modal:'public',
-      heroVideo:'assets/video/hero-mode-tabs.mp4',
+      heroVideo:'assets/video/hero-mode-tabs-v0318.mp4',
       floatingLabel:'공공문의'
     }
   };
@@ -85,11 +85,20 @@
     }else{
       try{video.currentTime=0;}catch(e){}
     }
-    video.parentElement?.classList.remove('video-ready');
-    const markReady=()=>video.parentElement?.classList.add('video-ready');
+    const media=video.parentElement;
+    const markReady=()=>{media?.classList.add('video-ready');media?.classList.remove('video-fallback');};
     if(video.readyState>=2) markReady();
-    else video.addEventListener('canplay',markReady,{once:true});
+    else {
+      video.addEventListener('loadeddata',markReady,{once:true});
+      video.addEventListener('canplay',markReady,{once:true});
+      video.addEventListener('playing',markReady,{once:true});
+    }
     video.muted=true;
+    video.defaultMuted=true;
+    video.playsInline=true;
+    video.setAttribute('muted','');
+    video.setAttribute('playsinline','');
+    video.setAttribute('webkit-playsinline','');
     const playPromise=video.play?.();
     if(playPromise&&typeof playPromise.catch==='function') playPromise.catch(()=>{});
   }
@@ -135,6 +144,14 @@
   // Keep the second-row tab bar visually anchored while the header hides.
   const markScroll=()=>document.body.classList.toggle('is-scrolled',window.scrollY>90);
   window.addEventListener('scroll',markScroll,{passive:true});markScroll();
+
+  // Desktop side promotion is shown only while the first hero is on screen.
+  if(hero.section){
+    const promoObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>document.body.classList.toggle('hero-promo-in-view',entry.isIntersecting));
+    },{threshold:.12});
+    promoObserver.observe(hero.section);
+  }
 
   // Count-up metrics only when the advertising metric stage is visible.
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;

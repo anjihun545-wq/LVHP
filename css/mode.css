@@ -1332,3 +1332,197 @@ body.modal-open .floating-inquiry{opacity:0;pointer-events:none}
   .floating-inquiry{right:12px;width:66px;height:66px;padding:8px 6px;font-size:9.8px}.floating-inquiry-icon,.floating-inquiry-icon svg{width:23px;height:23px}
   .inquiry-choice-grid{grid-template-columns:1fr}
 }
+
+/* =========================================================
+   v0.3.18 — cross-browser hero title contrast
+   Safari/iOS does not rely on paint-order. Use WebKit stroke +
+   conventional text-shadow so the blue title keeps the same depth.
+   ========================================================= */
+.hero--mode .hero-copy .display{
+  color:var(--lv-blue) !important;
+  -webkit-text-stroke:.7px rgba(0,0,0,.34);
+  text-shadow:
+    1px 2px 0 rgba(0,0,0,.34),
+    2px 4px 0 rgba(0,0,0,.20),
+    0 7px 18px rgba(0,0,0,.52),
+    0 16px 34px rgba(0,0,0,.24) !important;
+  paint-order:normal;
+}
+
+/* =========================================================
+   v0.3.18 — public screen slider fixed viewport
+   Previous JS measured the entire slide (image + caption) and wrote
+   that value back as the image height, making it grow every change.
+   Keep one exact image viewport for every slide instead.
+   ========================================================= */
+.public-screen-slider{
+  --public-slide-height:640px;
+}
+.public-screen-slide img{
+  height:var(--public-slide-height) !important;
+  min-height:var(--public-slide-height);
+  max-height:var(--public-slide-height);
+  object-fit:cover;
+  object-position:center top;
+}
+@media (max-width:420px){
+  .public-screen-slider{
+    --public-slide-height:560px;
+  }
+}
+
+
+/* =========================================================
+   v0.3.20 — image popup + 24h dismissal
+   ========================================================= */
+/* Safari/Chrome 공통: 메인 파란 타이틀은 외곽 그림자만 사용한다. */
+.hero--mode .hero-copy .display{
+  color:var(--lv-blue) !important;
+  -webkit-text-stroke:0 transparent !important;
+  text-stroke:0 transparent !important;
+  paint-order:normal !important;
+  text-shadow:none !important;
+  filter:
+    drop-shadow(0 3px 0 rgba(0,0,0,.68))
+    drop-shadow(0 8px 14px rgba(0,0,0,.34));
+}
+
+/* 공통 팝업: 기본은 완전히 숨기고 JS가 허용한 경우에만 노출 */
+.audience-promo{
+  position:fixed;
+  z-index:740;
+  top:178px;
+  left:50%;
+  width:min(86vw,360px);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:18px;
+  overflow:hidden;
+  background:#0B111B;
+  box-shadow:0 24px 70px rgba(0,0,0,.46),0 0 0 1px rgba(10,108,245,.08);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translate3d(-50%,14px,0) scale(.975);
+  transition:opacity .28s ease,visibility .28s ease,transform .38s var(--ease);
+}
+body.promo-enabled.hero-promo-in-view.hero-open .audience-promo{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translate3d(-50%,0,0) scale(1);
+}
+body.modal-open .audience-promo,
+body.menu-open .audience-promo{
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+.audience-promo__media{
+  display:block;
+  width:100%;
+  padding:0;
+  margin:0;
+  border:0;
+  border-radius:0;
+  background:#06162B;
+  cursor:pointer;
+  overflow:hidden;
+}
+.audience-promo__media img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  background:#06162B;
+}
+.audience-promo__media:focus-visible{
+  outline:3px solid #7CB6FF;
+  outline-offset:-3px;
+}
+.audience-promo__close{
+  position:absolute;
+  z-index:3;
+  top:10px;
+  right:10px;
+  width:34px;
+  height:34px;
+  border:1px solid rgba(255,255,255,.32);
+  border-radius:50%;
+  background:rgba(0,0,0,.58);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+  color:#fff;
+  font:400 24px/30px Arial,sans-serif;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.28);
+}
+.audience-promo__close:hover,
+.audience-promo__close:focus-visible{
+  background:rgba(0,0,0,.82);
+  border-color:rgba(255,255,255,.62);
+}
+.audience-promo__footer{
+  display:flex;
+  min-height:44px;
+  align-items:center;
+  justify-content:center;
+  border-top:1px solid rgba(255,255,255,.09);
+  background:#0A0E14;
+}
+.audience-promo__hide24{
+  width:100%;
+  min-height:44px;
+  padding:10px 16px;
+  border:0;
+  background:transparent;
+  color:rgba(255,255,255,.72);
+  font-size:12px;
+  line-height:1.2;
+  font-weight:700;
+  letter-spacing:-.02em;
+  cursor:pointer;
+}
+.audience-promo__hide24:hover,
+.audience-promo__hide24:focus-visible{
+  color:#fff;
+  background:rgba(255,255,255,.055);
+}
+
+/* PC: 520px 메인 캔버스의 왼쪽 여백에 정사각형 팝업 고정 */
+@media(min-width:1280px){
+  .audience-promo{
+    top:clamp(92px,13vh,150px);
+    left:auto;
+    right:calc(50% + 290px);
+    width:min(380px,calc(50vw - 310px));
+    min-width:310px;
+    transform:translate3d(-18px,12px,0) scale(.98);
+  }
+  body.promo-enabled.hero-promo-in-view.hero-open .audience-promo{
+    transform:translate3d(0,0,0) scale(1);
+  }
+  .audience-promo:hover{
+    border-color:rgba(90,155,255,.42);
+  }
+}
+
+@media(max-width:420px){
+  .audience-promo{
+    top:172px;
+    width:min(84vw,330px);
+    border-radius:16px;
+  }
+  .audience-promo__close{top:8px;right:8px;width:32px;height:32px;font-size:22px;line-height:28px}
+  .audience-promo__footer,.audience-promo__hide24{min-height:42px}
+}
+@media(max-width:360px){
+  .audience-promo{top:166px;width:82vw}
+}
+@media(max-height:700px) and (max-width:1279px){
+  .audience-promo{top:150px;width:min(72vh,82vw)}
+}
+@media(prefers-reduced-motion:reduce){
+  .audience-promo{transition:none !important}
+}
