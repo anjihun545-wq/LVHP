@@ -6,9 +6,9 @@
   const hide24Btn=document.getElementById('audiencePromoHide24');
   if(!promo||!trigger||!image||!closeBtn||!hide24Btn)return;
 
-  const HIDE_UNTIL_KEY='localvisionPromoHideUntil';
+  const HIDE_UNTIL_KEY_PREFIX='localvisionPromoHideUntil:';
   const ONE_DAY=24*60*60*1000;
-  let closedForPage=false;
+  const closedModesForPage=new Set();
 
   const modes={
     install:{
@@ -37,20 +37,29 @@
     remove(key){try{localStorage.removeItem(key)}catch(_){}}
   };
 
+  // v0.3.20~0.3.21의 전체 탭 공통 숨김 키는 더 이상 사용하지 않는다.
+  local.remove('localvisionPromoHideUntil');
+
   function currentMode(){
     const mode=document.body.dataset.mode;
     return modes[mode]?mode:'install';
   }
 
-  function hiddenFor24Hours(){
-    const hideUntil=Number(local.get(HIDE_UNTIL_KEY)||0);
+  function hideKey(mode=currentMode()){
+    return HIDE_UNTIL_KEY_PREFIX+mode;
+  }
+
+  function hiddenFor24Hours(mode=currentMode()){
+    const key=hideKey(mode);
+    const hideUntil=Number(local.get(key)||0);
     if(hideUntil>Date.now())return true;
-    if(hideUntil)local.remove(HIDE_UNTIL_KEY);
+    if(hideUntil)local.remove(key);
     return false;
   }
 
   function setVisible(enabled){
-    const visible=Boolean(enabled)&&!closedForPage&&!hiddenFor24Hours();
+    const mode=currentMode();
+    const visible=Boolean(enabled)&&!closedModesForPage.has(mode)&&!hiddenFor24Hours(mode);
     document.body.classList.toggle('promo-enabled',visible);
     promo.setAttribute('aria-hidden',String(!visible));
   }
@@ -63,8 +72,8 @@
     trigger.setAttribute('aria-label',data.label);
   }
 
-  function closeForPage(){
-    closedForPage=true;
+  function closeForCurrentMode(){
+    closedModesForPage.add(currentMode());
     setVisible(false);
   }
 
@@ -72,25 +81,30 @@
   setVisible(true);
 
   const modeObserver=new MutationObserver(mutations=>{
-    if(mutations.some(m=>m.attributeName==='data-mode'))update();
+    if(mutations.some(m=>m.attributeName==='data-mode')){
+      update();
+      setVisible(true);
+    }
   });
   modeObserver.observe(document.body,{attributes:true,attributeFilter:['data-mode']});
 
   closeBtn.addEventListener('click',e=>{
     e.preventDefault();
     e.stopPropagation();
-    closeForPage();
+    closeForCurrentMode();
   });
 
   hide24Btn.addEventListener('click',e=>{
     e.preventDefault();
     e.stopPropagation();
-    local.set(HIDE_UNTIL_KEY,String(Date.now()+ONE_DAY));
-    closeForPage();
+    const mode=currentMode();
+    local.set(hideKey(mode),String(Date.now()+ONE_DAY));
+    closedModesForPage.add(mode);
+    setVisible(false);
   });
 
   // 이미지 전체가 문의하기 버튼이다. 기존 문의 모달의 data-modal-type 이벤트가 이어서 실행된다.
   trigger.addEventListener('click',()=>{
-    requestAnimationFrame(closeForPage);
+    requestAnimationFrame(closeForCurrentMode);
   });
 })();
