@@ -1,3 +1,15 @@
+# LocalVision v0.3.23 — Brand Meta / Favicon
+
+## 이번 수정
+- 사용자가 제공한 LocalVision 정식 로고 기준으로 파비콘 교체
+- 16×16 / 32×32 / ICO / Apple Touch / PWA 192·512 아이콘 생성
+- 링크 공유 썸네일을 기존 매장 사진에서 LocalVision 로고 전용 1200×630 이미지로 교체
+- Open Graph / Twitter Card 메타태그 보강
+- `lvhp.vercel.app` 기준 절대 OG 이미지 URL 적용
+- 기존 문의, 팝업, 탭별 24시간 숨김, Vercel API 구조는 변경하지 않음
+
+> SNS·메신저 링크 썸네일은 서비스별 캐시 때문에 기존 미리보기가 잠시 남아 있을 수 있습니다.
+
 # LocalVision v0.3.22 — 탭별 팝업 24시간 숨김 분리
 
 - `24시간 동안 열지 않기` 상태를 사장님 / 광고주 / 기관 탭별로 각각 저장하도록 수정
